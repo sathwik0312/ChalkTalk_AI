@@ -29,35 +29,17 @@ export default function FeedbackSummary({ score, summary, suggestions }: Feedbac
                 </div>
             </div>
 
-<<<<<<< Updated upstream
-            {/* Summary Card */}
-            <div className="md:col-span-2 bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
-                <h3 className="text-slate-800 dark:text-white font-semibold mb-4 flex items-center gap-2">
-                    <Lightbulb size={20} className="text-yellow-500" />
-                    Executive Summary
-                </h3>
-                <ul className="space-y-3">
-                    {summary.map((item, i) => (
-                        <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-300">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center text-sm font-medium">
-                                {i + 1}
-                            </span>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-=======
             <div className="md:col-span-2 space-y-6">
                 {/* Executive Summary */}
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
-                    <h3 className="text-slate-800 font-semibold mb-4 flex items-center gap-2">
+                <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+                    <h3 className="text-slate-800 dark:text-white font-semibold mb-4 flex items-center gap-2">
                         <Lightbulb size={20} className="text-yellow-500" />
                         Executive Summary
                     </h3>
                     <ul className="space-y-3">
                         {summary.map((item, i) => (
-                            <li key={i} className="flex gap-3 text-slate-600">
-                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm font-medium">
+                            <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-300">
+                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center text-sm font-medium">
                                     {i + 1}
                                 </span>
                                 {item}
@@ -68,14 +50,14 @@ export default function FeedbackSummary({ score, summary, suggestions }: Feedbac
 
                 {/* Specific Improvements */}
                 {suggestions && suggestions.length > 0 && (
-                    <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
-                        <h3 className="text-slate-800 font-semibold mb-4 flex items-center gap-2">
+                    <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+                        <h3 className="text-slate-800 dark:text-white font-semibold mb-4 flex items-center gap-2">
                             <TrendingUp size={20} className="text-blue-500" />
                             Areas for Improvement
                         </h3>
                         <ul className="space-y-3">
                             {suggestions.map((item, i) => (
-                                <li key={i} className="flex gap-3 text-slate-600">
+                                <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-300">
                                     <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
                                     {item}
                                 </li>
@@ -83,7 +65,6 @@ export default function FeedbackSummary({ score, summary, suggestions }: Feedbac
                         </ul>
                     </div>
                 )}
->>>>>>> Stashed changes
             </div>
         </div>
     );
