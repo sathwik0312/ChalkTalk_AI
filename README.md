@@ -11,7 +11,7 @@ To provide actionable feedback to educators by quantifying engagement. The syste
 ## ✨ Key Features
 
 -   **Video Ingestion & Smart Sampling**: Extracts high-quality keyframes every 45 seconds and detects "high-motion" segments using OpenCV.
--   **Audio-Visual Fusion Brain**: Uses **Google Gemini 1.5 Flash** (Multimodal LLM) to analyze frames + audio context.
+-   **Audio-Visual Fusion Brain**: Uses **Google Gemini 2.5 Flash** (Multimodal LLM) to analyze frames + audio context.
 -   **Board vs. PDF Logic**: A specialized classifier using **Tesseract OCR** to distinguish between static slides (perfectly aligned text) and active handwriting (skewed/messy text).
 -   **Engagement Heatmap**: A visual timeline marking "Whiteboard/Active" moments in Green and "PDF-only" moments in Red.
 -   **Executive Summary**: A concise AI-generated critique for the professor.
