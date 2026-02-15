@@ -15,7 +15,6 @@ interface HeatmapProps {
 
 export default function EngagementHeatmap({ data }: HeatmapProps) {
     // Transform data for visualization
-    // We'll map 'active' to positive values and 'static' to lower values for visual distinction
     const chartData = data.map(d => ({
         ...d,
         value: d.type === 'active' ? 10 : 2,
@@ -23,8 +22,8 @@ export default function EngagementHeatmap({ data }: HeatmapProps) {
     }));
 
     return (
-        <div className="w-full bg-white rounded-xl shadow-sm border border-slate-100 p-6">
-            <h3 className="text-lg font-semibold text-slate-800 mb-6">Engagement Timeline</h3>
+        <div className="w-full bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-6">
+            <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-6">Engagement Timeline</h3>
 
             <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -46,7 +45,7 @@ export default function EngagementHeatmap({ data }: HeatmapProps) {
                                 if (active && payload && payload.length) {
                                     const data = payload[0].payload;
                                     return (
-                                        <div className="bg-slate-900 text-white text-xs rounded-md p-2 shadow-xl">
+                                        <div className="bg-slate-900 dark:bg-slate-800 text-white text-xs rounded-md p-2 shadow-xl border border-slate-800 dark:border-slate-700">
                                             <p className="font-semibold mb-1">{data.time}</p>
                                             <p className={data.type === 'active' ? 'text-green-400' : 'text-red-400'}>
                                                 {data.type === 'active' ? 'Active Teaching' : 'Static Slide'}
@@ -82,11 +81,11 @@ export default function EngagementHeatmap({ data }: HeatmapProps) {
             <div className="flex gap-6 mt-4 justify-center">
                 <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-green-500 opacity-20"></div>
-                    <span className="text-sm text-slate-600">Active Teaching (Whiteboard)</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Active Teaching (Whiteboard)</span>
                 </div>
                 <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500 opacity-20"></div>
-                    <span className="text-sm text-slate-600">Static Slide (PDF)</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Static Slide (PDF)</span>
                 </div>
             </div>
         </div>
