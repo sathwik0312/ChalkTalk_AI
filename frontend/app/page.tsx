@@ -44,7 +44,7 @@ export default function Home() {
             <LayoutDashboard size={20} />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Pedagogy-Vision</h1>
+            <h1 className="text-2xl font-bold text-slate-900">ChalkTalk AI</h1>
             <p className="text-slate-500">Automated Lecture Quality Auditor</p>
           </div>
         </header>
