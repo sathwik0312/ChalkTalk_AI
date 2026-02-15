@@ -70,21 +70,9 @@ export default function Home() {
               <p className="text-slate-500 dark:text-slate-400">Automated Lecture Quality Auditor</p>
             </div>
           </div>
-
-          <div className="flex items-center gap-4">
-            <Link
-              href="/history"
-              className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
-            >
-              <History size={16} />
-              History
-            </Link>
-
-            <ThemeToggle />
-
-            <div className="hidden md:flex items-center gap-2 ml-2">
-              <UserMenu />
-            </div>
+          <div>
+            <h1 className="text-2xl font-bold text-slate-900">ChalkTalk AI</h1>
+            <p className="text-slate-500">Automated Lecture Quality Auditor</p>
           </div>
         </header>
 

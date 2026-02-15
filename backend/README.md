@@ -1,4 +1,4 @@
-# Pedagogy-Vision Backend
+# ChalkTalk AI Backend
 
 Process lecture videos to analyze pedagogical engagement.
 
