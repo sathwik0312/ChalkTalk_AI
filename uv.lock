@@ -9,7 +9,7 @@ resolution-markers = [
 
 [manifest]
 members = [
-    "backend",
+    "chalktalk-ai-backend",
     "patriothack",
 ]
 
@@ -45,6 +45,7 @@ wheels = [
 ]
 
 [[package]]
+<<<<<<< Updated upstream
 name = "backend"
 version = "0.1.0"
 source = { virtual = "backend" }
@@ -80,6 +81,8 @@ requires-dist = [
 ]
 
 [[package]]
+=======
+>>>>>>> Stashed changes
 name = "certifi"
 version = "2026.1.4"
 source = { registry = "https://pypi.org/simple" }
@@ -156,6 +159,35 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/a0/1d/ec1a60bd1a10daa292d3cd6bb0b359a81607154fb8165f3ec95fe003b85c/cffi-2.0.0-cp314-cp314t-win32.whl", hash = "sha256:1fc9ea04857caf665289b7a75923f2c6ed559b8298a1b8c49e59f7dd95c8481e", size = 180487, upload-time = "2025-09-08T23:23:40.423Z" },
     { url = "https://files.pythonhosted.org/packages/bf/41/4c1168c74fac325c0c8156f04b6749c8b6a8f405bbf91413ba088359f60d/cffi-2.0.0-cp314-cp314t-win_amd64.whl", hash = "sha256:d68b6cef7827e8641e8ef16f4494edda8b36104d79773a334beaa1e3521430f6", size = 191726, upload-time = "2025-09-08T23:23:41.742Z" },
     { url = "https://files.pythonhosted.org/packages/ae/3a/dbeec9d1ee0844c679f6bb5d6ad4e9f198b1224f4e7a32825f47f6192b0c/cffi-2.0.0-cp314-cp314t-win_arm64.whl", hash = "sha256:0a1527a803f0a659de1af2e1fd700213caba79377e27e4693648c2923da066f9", size = 184195, upload-time = "2025-09-08T23:23:43.004Z" },
+]
+
+[[package]]
+name = "chalktalk-ai-backend"
+version = "0.1.0"
+source = { virtual = "backend" }
+dependencies = [
+    { name = "fastapi" },
+    { name = "google-generativeai" },
+    { name = "numpy" },
+    { name = "opencv-python-headless" },
+    { name = "pillow" },
+    { name = "pytesseract" },
+    { name = "python-dotenv" },
+    { name = "python-multipart" },
+    { name = "uvicorn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", specifier = ">=0.129.0" },
+    { name = "google-generativeai", specifier = ">=0.8.6" },
+    { name = "numpy", specifier = ">=2.4.2" },
+    { name = "opencv-python-headless", specifier = ">=4.13.0.92" },
+    { name = "pillow", specifier = ">=12.1.1" },
+    { name = "pytesseract", specifier = ">=0.3.13" },
+    { name = "python-dotenv", specifier = ">=1.2.1" },
+    { name = "python-multipart", specifier = ">=0.0.22" },
+    { name = "uvicorn", specifier = ">=0.40.0" },
 ]
 
 [[package]]
