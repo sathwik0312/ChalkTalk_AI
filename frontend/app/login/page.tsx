@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../../context/AuthContext';
-import { LogIn, AlertCircle } from 'lucide-react';
+import { LogIn, AlertCircle, ArrowLeft } from 'lucide-react';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ export default function LoginPage() {
         setIsLoading(true);
 
         try {
-            const res = await fetch('http://127.0.0.1:8000/login', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
@@ -41,6 +41,13 @@ export default function LoginPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4 font-[family-name:var(--font-geist-sans)] transition-colors duration-300">
             <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl p-8 w-full max-w-md">
+                <Link
+                    href="/"
+                    className="absolute top-8 left-8 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors flex items-center gap-2"
+                >
+                    <ArrowLeft size={20} />
+                    <span className="text-sm font-medium">Back</span>
+                </Link>
                 <div className="text-center mb-8">
                     <div className="h-12 w-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center mx-auto mb-4">
                         <LogIn size={24} />

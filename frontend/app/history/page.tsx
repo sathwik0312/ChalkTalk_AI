@@ -30,7 +30,7 @@ export default function HistoryPage() {
         }
 
         if (user) {
-            fetch(`http://127.0.0.1:8000/history?user_id=${user.id}`)
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/history?user_id=${user.id}`)
                 .then(res => res.json())
                 .then(data => {
                     setHistory(data);
@@ -50,7 +50,7 @@ export default function HistoryPage() {
         if (!confirm("Are you sure you want to delete this history item?")) return;
 
         try {
-            const res = await fetch(`http://127.0.0.1:8000/history/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/history/${id}`, {
                 method: 'DELETE'
             });
 
@@ -124,7 +124,7 @@ export default function HistoryPage() {
                                     <div className="aspect-video bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
                                         {record.thumbnail ? (
                                             <img
-                                                src={record.thumbnail.startsWith('data:') ? record.thumbnail : `http://127.0.0.1:8000${record.thumbnail}`}
+                                                src={record.thumbnail.startsWith('data:') ? record.thumbnail : `${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}${record.thumbnail}`}
                                                 alt={record.title}
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             />
