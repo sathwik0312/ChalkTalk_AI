@@ -43,6 +43,11 @@ export default function Home() {
         "Mid-lecture segment (15:00-25:00) relied too heavily on static slides.",
         "Consider breaking up long PDF scrolls with more verbal checks for understanding."
       ],
+      suggestions: [
+        "The conceptual explanation of 'recursion' at 12:30 could use a visual diagram instead of just code.",
+        "More active questioning during the 'sorting algorithms' section would improve engagement.",
+        "The slide on 'Big O Notation' was dense; breaking it down into steps on the board would be better."
+      ],
       timeline: [
         { time: '00:00', type: 'active' },
         { time: '00:45', type: 'active' },
@@ -85,6 +90,7 @@ export default function Home() {
             <FeedbackSummary
               score={analysisData.score}
               summary={analysisData.summary}
+              suggestions={analysisData.suggestions}
             />
             <EngagementHeatmap data={analysisData.timeline} />
 

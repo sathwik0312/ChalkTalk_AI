@@ -20,6 +20,7 @@ async def analyze_lecture(frames, timestamps):
         "title": string (A catchy, descriptive title for the lecture),
         "score": number (0-10 pedagogical engagement score),
         "summary": [string] (3-5 bullet points of executive summary/feedback),
+        "suggestions": [string] (3-5 specific topics/areas where the professor could have explained better or used more active teaching),
         "timeline": [
             {
                 "time": string (timestamp in MM:SS format),
@@ -55,5 +56,6 @@ async def analyze_lecture(frames, timestamps):
         return {
             "score": 0,
             "summary": ["Error analyzing video.", str(e)],
+            "suggestions": [],
             "timeline": []
         }
