@@ -17,6 +17,7 @@ async def analyze_lecture(frames, timestamps):
     prompt = """
     Analyze these frames from a lecture video. Return a JSON object with the following structure:
     {
+        "title": string (A catchy, descriptive title for the lecture),
         "score": number (0-10 pedagogical engagement score),
         "summary": [string] (3-5 bullet points of executive summary/feedback),
         "timeline": [

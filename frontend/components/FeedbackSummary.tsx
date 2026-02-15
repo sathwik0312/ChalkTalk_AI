@@ -10,16 +10,16 @@ interface FeedbackSummaryProps {
 
 export default function FeedbackSummary({ score, summary }: FeedbackSummaryProps) {
     const getScoreColor = (s: number) => {
-        if (s >= 8) return 'text-green-600 bg-green-50 border-green-200';
-        if (s >= 5) return 'text-yellow-600 bg-yellow-50 border-yellow-200';
-        return 'text-red-600 bg-red-50 border-red-200';
+        if (s >= 8) return 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800';
+        if (s >= 5) return 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800';
+        return 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800';
     };
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {/* Score Card */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100 flex flex-col items-center justify-center text-center">
-                <h3 className="text-slate-500 font-medium mb-4 flex items-center gap-2">
+            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col items-center justify-center text-center">
+                <h3 className="text-slate-500 dark:text-slate-400 font-medium mb-4 flex items-center gap-2">
                     <Target size={18} />
                     Engagement Score
                 </h3>
@@ -29,15 +29,15 @@ export default function FeedbackSummary({ score, summary }: FeedbackSummaryProps
             </div>
 
             {/* Summary Card */}
-            <div className="md:col-span-2 bg-white rounded-xl p-6 shadow-sm border border-slate-100">
-                <h3 className="text-slate-800 font-semibold mb-4 flex items-center gap-2">
+            <div className="md:col-span-2 bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+                <h3 className="text-slate-800 dark:text-white font-semibold mb-4 flex items-center gap-2">
                     <Lightbulb size={20} className="text-yellow-500" />
                     Executive Summary
                 </h3>
                 <ul className="space-y-3">
                     {summary.map((item, i) => (
-                        <li key={i} className="flex gap-3 text-slate-600">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm font-medium">
+                        <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-300">
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center text-sm font-medium">
                                 {i + 1}
                             </span>
                             {item}
