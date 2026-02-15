@@ -39,18 +39,18 @@ export default function LoginPage() {
     };
 
     return (
-        <main className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-[family-name:var(--font-geist-sans)]">
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-8 w-full max-w-md">
+        <main className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4 font-[family-name:var(--font-geist-sans)] transition-colors duration-300">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl p-8 w-full max-w-md">
                 <div className="text-center mb-8">
-                    <div className="h-12 w-12 bg-slate-900 text-white rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <div className="h-12 w-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center mx-auto mb-4">
                         <LogIn size={24} />
                     </div>
-                    <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
-                    <p className="text-slate-500">Sign in to your account</p>
+                    <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Welcome Back</h1>
+                    <p className="text-slate-500 dark:text-slate-400">Sign in to your account</p>
                 </div>
 
                 {error && (
-                    <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-lg flex items-center gap-2 text-sm border border-red-100">
+                    <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg flex items-center gap-2 text-sm border border-red-100 dark:border-red-900/30">
                         <AlertCircle size={16} />
                         {error}
                     </div>
@@ -58,21 +58,21 @@ export default function LoginPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
                         <input
                             type="email"
                             required
-                            className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:ring-2 focus:ring-slate-900 dark:focus:ring-white focus:border-transparent outline-none transition-all"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Password</label>
                         <input
                             type="password"
                             required
-                            className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:ring-2 focus:ring-slate-900 dark:focus:ring-white focus:border-transparent outline-none transition-all"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -81,15 +81,15 @@ export default function LoginPage() {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-slate-900 text-white py-2.5 rounded-lg font-medium hover:bg-slate-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+                        className="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-2.5 rounded-lg font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-2"
                     >
                         {isLoading ? 'Signing in...' : 'Sign In'}
                     </button>
                 </form>
 
-                <p className="text-center mt-6 text-sm text-slate-600">
+                <p className="text-center mt-6 text-sm text-slate-600 dark:text-slate-400">
                     Don't have an account?{' '}
-                    <Link href="/signup" className="text-slate-900 font-medium hover:underline">
+                    <Link href="/signup" className="text-slate-900 dark:text-white font-medium hover:underline">
                         Sign up
                     </Link>
                 </p>
