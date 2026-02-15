@@ -61,7 +61,7 @@ export default function VideoUpload({ onUploadComplete }: VideoUploadProps) {
         formData.append('user_id', user.id);
 
         try {
-            const response = await fetch('http://localhost:8000/upload', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/upload`, {
                 method: 'POST',
                 body: formData,
             });
@@ -92,7 +92,7 @@ export default function VideoUpload({ onUploadComplete }: VideoUploadProps) {
         setIsUploading(true);
 
         try {
-            const response = await fetch('http://localhost:8000/analyze-url', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/analyze-url`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
