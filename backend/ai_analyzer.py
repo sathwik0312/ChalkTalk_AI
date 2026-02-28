@@ -1,5 +1,7 @@
-import google.generativeai as genai
+from typing import List, Dict, Any
 import os
+import google.generativeai as genai
+from google.generativeai import types
 import PIL.Image
 import json
 import logging
@@ -8,62 +10,79 @@ from dotenv import load_dotenv
 load_dotenv()
 logger = logging.getLogger(__name__)
 
-# Configure model for Gemini 2.5 Flash
-# Note: Using multimodal capabilities for Pedagogy Analysis
+# Configure Google Gemini
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-model = genai.GenerativeModel('gemini-2.0-flash', generation_config={"response_mime_type": "application/json"})
 
-async def analyze_lecture(frames_info):
+# Use Gemini 2.0 Flash for speed and multimodal capabilities
+model = genai.GenerativeModel('gemini-2.0-flash')
+
+async def analyze_lecture(frames_info: List[Dict[str, Any]]) -> Dict[str, Any]:
     """
-    Enhanced analysis using Gemini 2.0 Flash (Multimodal).
-    Identifies 'ChalkTalk' moments (whiteboard writing) vs Passive delivery.
+    Production-grade multimodal analysis of lecture frames.
+    Identifies pedagogical style, whiteboard usage, and engagement.
     """
     
     prompt = """
-    You are an expert Pedagogical Consultant. I will provide you with a series of frames from a lecture.
+    You are a World-Class Pedagogical Consultant. Analyze these chronological frames from a university lecture.
     
-    Analyze the frames and provide a JSON report on the professor's teaching effectiveness.
-    
-    Key Metrics to observe:
-    1. Whiteboard Usage: Is the professor writing (ChalkTalk)?
-    2. Body Language: Gesturing, facing students vs facing the board.
-    3. Visual Aids: Usage of slides vs hand-drawn diagrams.
-    
-    Return a JSON object with this exact structure:
+    Provide a comprehensive pedagogical audit in JSON format:
     {
         "lecture_meta": {
-            "title": "catchy title",
+            "title": "catchy and descriptive title",
             "engagement_score": number (1-100),
-            "primary_style": "Visual / Auditory / Kinesthetic"
+            "primary_style": "ChalkTalk / Slide-Based / Socratic / Hybrid"
         },
-        "pedagogical_feedback": {
-            "strengths": ["list of 3 points"],
-            "weaknesses": ["list of 3 points"],
-            "action_plan": "A short tactical paragraph to improve the next lecture"
+        "pedagogical_analysis": {
+            "whiteboard_presence": "High/Medium/Low - detail the frequency and clarity of writing",
+            "student_focus": "Does the professor face the students or the board more?",
+            "pacing": "Analyze the speed of delivery based on visual transitions"
         },
-        "engagement_timeline": [
+        "feedback": {
+            "strengths": ["3 specific positive observations"],
+            "areas_for_improvement": ["3 specific tactical changes"],
+            "pro_tip": "One 'Golden Rule' for this specific professor"
+        },
+        "engagement_heatmap": [
             {
                 "timestamp": "MM:SS",
-                "state": "Active (Writing) / Engaging (Speaking) / Passive (Slide Reading)",
-                "reasoning": "brief detail"
+                "activity_level": "Active (Writing) / Engaging (Gesturing) / Passive (Static)",
+                "observation": "what is happening here?"
             }
         ]
     }
+    
+    Focus specifically on the 'ChalkTalk' aspect: Is the act of writing helping or hindering the flow?
     """
     
-    # Bundle frames with their metadata for the model
-    # We select up to 15 frames to stay within reasonable token/processing limits
-    selected_frames = frames_info[:15]
+    # Selection logic: Max 15 frames distributed across the lecture to stay in budget
+    if len(frames_info) > 15:
+        step = len(frames_info) // 15
+        selected = frames_info[::step][:15]
+    else:
+        selected = frames_info
     
     contents = [prompt]
-    for frame in selected_frames:
-        img = PIL.Image.open(frame['path'])
-        contents.append(f"Timestamp: {frame['timestamp']}")
-        contents.append(img)
-            
+    for frame in selected:
+        try:
+            img = PIL.Image.open(frame['path'])
+            contents.append(f"Timestamp: {frame['timestamp']}")
+            contents.append(img)
+        except Exception as e:
+            logger.error(f"Failed to load frame {frame['path']}: {e}")
+
     try:
-        response = model.generate_content(contents)
+        # Use controlled JSON output
+        response = model.generate_content(
+            contents,
+            generation_config=genai.GenerationConfig(
+                response_mime_type="application/json",
+            )
+        )
         return json.loads(response.text)
     except Exception as e:
-        logger.error(f"multimodal analysis failed: {e}")
-        return {"error": str(e)}
+        logger.error(f"Gemini Analysis Failed: {e}")
+        return {
+            "error": "Analysis failed",
+            "details": str(e),
+            "status": "partial_success" if len(contents) > 1 else "failed"
+        }

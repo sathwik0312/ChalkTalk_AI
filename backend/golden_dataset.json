@@ -1,0 +1,163 @@
+[
+    {
+        "video_meta": {
+            "name": "CS229_Machine_Learning",
+            "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+        },
+        "analysis_results": {
+            "lecture_meta": {
+                "title": "Effective Teaching Strategies",
+                "engagement_score": 65,
+                "primary_style": "Auditory"
+            },
+            "pedagogical_feedback": {
+                "strengths": [
+                    "Clear speaking voice and well-paced delivery.",
+                    "Good eye contact with the audience.",
+                    "Enthusiastic presentation style."
+                ],
+                "weaknesses": [
+                    "Limited use of visual aids beyond slides.",
+                    "Lack of interaction or activities to engage students actively.",
+                    "Minimal use of the whiteboard for spontaneous explanation."
+                ],
+                "action_plan": "Incorporate more visual aids like diagrams or short videos to reinforce concepts. Plan short interactive activities (e.g., quick polls, think-pair-share) to break up the lecture and boost engagement. Use the whiteboard to illustrate key points or work through examples in real-time."
+            },
+            "engagement_timeline": [
+                {
+                    "timestamp": "05:00",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Professor is speaking and gesturing."
+                },
+                {
+                    "timestamp": "05:30",
+                    "state": "Passive (Slide Reading)",
+                    "reasoning": "Presenting slides about the class team."
+                },
+                {
+                    "timestamp": "06:00",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Professor is speaking and gesturing."
+                },
+                {
+                    "timestamp": "06:45",
+                    "state": "Passive (Slide Reading)",
+                    "reasoning": "Presenting a slide with a single word"
+                },
+                {
+                    "timestamp": "07:00",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Professor is speaking and gesturing."
+                },
+                {
+                    "timestamp": "08:00",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Professor is speaking and gesturing."
+                }
+            ]
+        }
+    },
+    {
+        "video_meta": {
+            "name": "CS106A_Programming_Methodology",
+            "url": "https://www.youtube.com/watch?v=KkMDCCdjyW8"
+        },
+        "analysis_results": {
+            "lecture_meta": {
+                "title": "Dynamic Delivery: A Lecture Analysis",
+                "engagement_score": 65,
+                "primary_style": "Auditory"
+            },
+            "pedagogical_feedback": {
+                "strengths": [
+                    "Clear and audible speaking voice.",
+                    "Engaging body language with frequent gestures.",
+                    "Use of the whiteboard for relevant, simple annotations."
+                ],
+                "weaknesses": [
+                    "Limited visual aids beyond whiteboard writing.",
+                    "Could incorporate more direct interaction with students.",
+                    "Lack of variety in teaching methods (mostly lecturing)."
+                ],
+                "action_plan": "To enhance the lecture's impact, integrate short, focused visual aids like charts or diagrams related to the topic. Incorporate brief 'think-pair-share' activities to encourage student engagement. Finally, remember to vary your vocal delivery to maintain audience interest."
+            },
+            "engagement_timeline": [
+                {
+                    "timestamp": "05:00",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Professor is addressing the class, using hand gestures."
+                },
+                {
+                    "timestamp": "05:15",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Active gestures indicate explanation and emphasis."
+                },
+                {
+                    "timestamp": "05:30",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Communicating verbally with gestures."
+                },
+                {
+                    "timestamp": "05:45",
+                    "state": "Active (Writing)",
+                    "reasoning": "Professor is writing on the board, interacting with the visual aid."
+                },
+                {
+                    "timestamp": "06:00",
+                    "state": "Active (Writing)",
+                    "reasoning": "Professor is writing on the board, interacting with the visual aid."
+                },
+                {
+                    "timestamp": "06:15",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Gesturing and speaking, maintaining eye contact."
+                },
+                {
+                    "timestamp": "06:30",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Using hands to communicate."
+                },
+                {
+                    "timestamp": "06:45",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Using hands to communicate."
+                },
+                {
+                    "timestamp": "07:00",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Engaging verbally"
+                },
+                {
+                    "timestamp": "07:15",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Explaining the board"
+                },
+                {
+                    "timestamp": "07:30",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Communicating verbally."
+                },
+                {
+                    "timestamp": "07:45",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Engaging verbally"
+                },
+                {
+                    "timestamp": "08:00",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Explaining the board"
+                },
+                {
+                    "timestamp": "08:15",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Communicating verbally with gestures."
+                },
+                {
+                    "timestamp": "08:30",
+                    "state": "Engaging (Speaking)",
+                    "reasoning": "Communicating verbally with gestures."
+                }
+            ]
+        }
+    }
+]
