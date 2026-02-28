@@ -2,60 +2,68 @@ import google.generativeai as genai
 import os
 import PIL.Image
 import json
+import logging
 from dotenv import load_dotenv
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
-# Configure the SDK with your API key
+# Configure model for Gemini 2.5 Flash
+# Note: Using multimodal capabilities for Pedagogy Analysis
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+model = genai.GenerativeModel('gemini-2.0-flash', generation_config={"response_mime_type": "application/json"})
 
-# Configure model for JSON output
-model = genai.GenerativeModel('gemini-2.5-flash', generation_config={"response_mime_type": "application/json"})
-
-async def analyze_lecture(frames, timestamps):
-    # Prepare the prompt
+async def analyze_lecture(frames_info):
+    """
+    Enhanced analysis using Gemini 2.0 Flash (Multimodal).
+    Identifies 'ChalkTalk' moments (whiteboard writing) vs Passive delivery.
+    """
+    
     prompt = """
-    Analyze these frames from a lecture video. Return a JSON object with the following structure:
+    You are an expert Pedagogical Consultant. I will provide you with a series of frames from a lecture.
+    
+    Analyze the frames and provide a JSON report on the professor's teaching effectiveness.
+    
+    Key Metrics to observe:
+    1. Whiteboard Usage: Is the professor writing (ChalkTalk)?
+    2. Body Language: Gesturing, facing students vs facing the board.
+    3. Visual Aids: Usage of slides vs hand-drawn diagrams.
+    
+    Return a JSON object with this exact structure:
     {
-        "title": string (A catchy, descriptive title for the lecture),
-        "score": number (0-10 pedagogical engagement score),
-        "summary": [string] (3-5 bullet points of executive summary/feedback),
-        "suggestions": [string] (3-5 specific topics/areas where the professor could have explained better or used more active teaching),
-        "timeline": [
+        "lecture_meta": {
+            "title": "catchy title",
+            "engagement_score": number (1-100),
+            "primary_style": "Visual / Auditory / Kinesthetic"
+        },
+        "pedagogical_feedback": {
+            "strengths": ["list of 3 points"],
+            "weaknesses": ["list of 3 points"],
+            "action_plan": "A short tactical paragraph to improve the next lecture"
+        },
+        "engagement_timeline": [
             {
-                "time": string (timestamp in MM:SS format),
-                "type": string ("active" or "static")
+                "timestamp": "MM:SS",
+                "state": "Active (Writing) / Engaging (Speaking) / Passive (Slide Reading)",
+                "reasoning": "brief detail"
             }
         ]
     }
-    
-    Timestamps provided for frames: """ + str(timestamps) + """
-    
-    For "timeline", map each frame analysis to the corresponding timestamp.
-    "active" = professor writing, gesturing, or speaking with face visible.
-    "static" = static slide or screen share only.
     """
     
-    # Load images
-    image_parts = []
-    try:
-        for frame_path in frames:
-            img = PIL.Image.open(frame_path)
-            image_parts.append(img)
+    # Bundle frames with their metadata for the model
+    # We select up to 15 frames to stay within reasonable token/processing limits
+    selected_frames = frames_info[:15]
+    
+    contents = [prompt]
+    for frame in selected_frames:
+        img = PIL.Image.open(frame['path'])
+        contents.append(f"Timestamp: {frame['timestamp']}")
+        contents.append(img)
             
-        # Call the model
-        response = model.generate_content([prompt, *image_parts])
-        
-        # Parse result
-        result = json.loads(response.text)
-        return result
-        
+    try:
+        response = model.generate_content(contents)
+        return json.loads(response.text)
     except Exception as e:
-        print(f"AI Analysis Error: {e}")
-        # Fallback error response
-        return {
-            "score": 0,
-            "summary": ["Error analyzing video.", str(e)],
-            "suggestions": [],
-            "timeline": []
-        }
+        logger.error(f"multimodal analysis failed: {e}")
+        return {"error": str(e)}
